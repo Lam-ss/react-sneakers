@@ -7,16 +7,26 @@ import Header from "./components/Header";
 
 
 function App() {
-  const arr = [1,2,3,4,5]
+  const [items, setItems] = React.useState([])
+  const [cartOpened, setCartOpened] = React.useState(false)
+
+  fetch('https://61b65020c95dd70017d40f00.mockapi.io/items')
+  .then(response => response.json())
+  .then(json => setItems(json));
+
+
+  const onClickCart = () => {
+    setCartOpened(true)
+  }
+
+  const onCloseCart = () => {
+    setCartOpened(false)
+  }
 
   return (
     <div className="wrapper">
-
-      <Drawer />
-
-      <Header />
-
-      
+      {cartOpened && <Drawer onCloseCart={onCloseCart} />}
+      <Header onClickCart={onClickCart} />
       <div className="content">
         <div className="content-item">
           <h1>Все кроссовки</h1>
@@ -27,16 +37,13 @@ function App() {
         </div>
 
         <div className="sneakers">
-        <Card 
-          title={'Мужские Кроссовки Nike Blazer Mid Suede'} 
-          price={'12 999 руб.'}
-          imageUrl={'/img/heart-unliked.svg'}
-        />
-        <Card 
-          title={'fgfМужские Кроссовки Nike Blazer Mid Suede'} 
-          price={'12 999 руб.'}
-          imageUrl={'/img/heart-unliked.svg'}
-        />
+
+        {items.map(item =>(<Card 
+            title={item.title} 
+            price={item.price}
+            imageUrl={item.imageUrl}
+          />
+        ))}
         </div>
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Drawer() {
+function Drawer({ onCloseCart }) {
     return (
-        <div style={{ display: 'none' }} className="overlay">
+        <div className="overlay">
             <div className="drawer">
-                <h2>Корзина <img width={40} height={40} className="removeBtn" src="/img/btn-remove.svg" alt="Remove" /></h2>
+                <h2>Корзина <img onClick={ onCloseCart } width={40} height={40} className="removeBtn" src="/img/btn-remove.svg" alt="Remove" /></h2>
 
 
                 <div className="items">
