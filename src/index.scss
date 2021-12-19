@@ -55,7 +55,7 @@ header {
   
 
   img {
-    margin-right: 15px;
+    margin-right: 30px;
   }
 
   
@@ -72,9 +72,12 @@ header {
   .headerRight {
     display: flex;
 
+    li {
+      cursor: pointer;
+    }
+
     li:first-child {
       margin-right: 30px;
-      cursor: pointer;
     }
   }
 }
@@ -97,6 +100,15 @@ header {
       border: 1px solid #F3F3F3;
       border-radius: 10px;
       padding: 0 15px;
+      position: relative;
+
+      .search-clear{
+        position: absolute;
+        right: 0;
+        top: 11px;
+        right: 10px; 
+        cursor: pointer;
+      }
       
       input {
         border: 0;
@@ -316,6 +328,46 @@ header {
 
     &:active {
       background: darken(#9dd558, 6%);
+    }
+  }
+
+  .cartEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+
+    .box {
+      width: 120px;
+      height: 120px;
+      
+    }
+    
+    p {
+      opacity: 0.6;
+      margin-bottom: 20px;
+      width: 280px;
+      line-height: 24px;
+    }
+
+    .greenButton {
+      width: 245px;
+      margin-top: 20px;
+  
+      &:hover {
+        img {
+          transform: rotate(180deg) translateX(3px);
+        }
+      }
+  
+      img {
+        position: relative;
+        top: 1px;
+        transform: rotate(180deg);
+        margin-right: 15px;
+        transition: transform 0.15s ease-in-out;
+      }
     }
   }
 }
